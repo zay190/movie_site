@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Planet</title>
+	<link href=" {% static 'mvtemp/css/bootstrap.min.css' %} " rel="stylesheet" >
+	<link href=" {% static "mvtemp/css/font-awesome.min.css" %} " rel="stylesheet" >
+	{% comment %} <link href=" {% static "mvtemp/css/global.css" %} " rel="stylesheet">
+	<link href=" {% static "mvtemp/css/index.css" %}" rel="stylesheet"> {% endcomment %}
+	<link href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+	<script src=" {% static "mvtemp/js/bootstrap.bundle.min.js" %} "></script>
+
+</head>
+<body>
+
+    {% include "mvtemp/navbar.html" %}
+    {% block content %}
+    
+    {% endblock content %}
+    <section id="footer_b" class="pt-3 pb-3 bg_grey">
+        <div class="container">
+           <div class="row footer_1">
+             <div class="col-md-8">
+              <div class="footer_1l">
+               <p class="mb-0">© 2025 T-tech All Rights Reserved </p>
+              </div>
+             </div>
+             <div class="col-md-4">
+              <div class="footer_1r">
+               <ul class="mb-0">
+                <li class="d-inline-block me-2"><a href="#">Home</a></li>
+                <li class="d-inline-block me-2"><a href="#">Features</a></li>
+                <li class="d-inline-block me-2"><a href="#">Pages</a></li>
+                <li class="d-inline-block me-2"><a href="#">Portfolio</a></li>
+                <li class="d-inline-block me-2"><a href="#">Blog</a></li>
+                <li class="d-inline-block"><a href="#">Contact</a></li>
+               </ul>
+              </div>
+             </div>
+           </div>
+        </div>
+        </section>
+        
+        <script>
+        window.onscroll = function() {myFunction()};
+        
+        var navbar_sticky = document.getElementById("navbar_sticky");
+        var sticky = navbar_sticky.offsetTop;
+        var navbar_height = document.querySelector('.navbar').offsetHeight;
+        
+        function myFunction() {
+          if (window.pageYOffset >= sticky + navbar_height) {
+            navbar_sticky.classList.add("sticky")
+            document.body.style.paddingTop = navbar_height + 'px';
+          } else {
+            navbar_sticky.classList.remove("sticky");
+            document.body.style.paddingTop = '0'
+          }
+        }
+</script>
+
+</body>
+
+</html>    

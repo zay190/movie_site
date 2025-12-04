@@ -1,0 +1,44 @@
+{% extends "mvtemp/base.html" %}
+{% block content %}
+{% load static %}
+	<link href=" {% static "mvtemp/css/index.css" %}" rel="stylesheet">
+	<link href=" {% static "mvtemp/css/global.css" %} " rel="stylesheet">
+	<link href=" {% static "mvtemp/css/search.css" %} " rel="stylesheet">
+
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Search Page</h1>
+        </div>
+    </div>
+</header>
+
+<div class="col-md-5 text-align m-auto my-5">
+    <div class="top_1m">
+     <form method="POST" action="{% url "search_url" %}" class="input-group"> 
+        {% csrf_token %}
+            <input type="text" class="form-control bg-black" name="search" placeholder="Search">
+            <button class="btn btn text-white bg_red rounded-0 border-0" type="submit">Search</button>
+        </form>
+    </div>
+   </div>
+
+   {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+                <p style="color:white;">{{message}}</p>
+            {% else %}
+                <p></p>
+            {% endif %}
+        {% endfor %}
+   {% endif %}
+
+   {% if search_val %}
+    {% for i in search_val %}
+           <a class="col_red" href="{% url "moviefile" i.id %}"> <p>{{i.mv_name}}</p> </a>
+            
+    {% endfor %}
+   {% endif %}
+
+
+{% endblock content %}

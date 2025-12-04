@@ -1,0 +1,53 @@
+{% extends "mvtemp/base.html" %}
+{% block content %}
+{% load static %}
+	<link href=" {% static "mvtemp/css/index.css" %}" rel="stylesheet">
+	<link href=" {% static "mvtemp/css/global.css" %} " rel="stylesheet">
+
+{% if fav_movies %}
+<div class="container-lg">
+    <div class="row row-cols-1 justify-content-center row-cols-md-3 g-4 w-100 my-3">
+        {% for movies in fav_movies %}
+        <div class="col">
+            <div class="card bg-dark">
+              <img src="{{movies.mv_image.url}}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">{{movies.mv_name}}</h5>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              </div>
+              <button class="button btn rounded-0 fw-bold ms-3 mb-5 w-50" id="fav-del" data-index="{{ movies.id }}">Delete</button>
+            </div>
+          </div>
+        {% endfor %}
+      </div>    
+</div>
+{% else %}
+<p class="card-text">Nothing Here</p>
+{% endif %}
+
+
+<script>
+  $(document).ready(function(){
+    $("#fav-del").click(function(e){
+      e.preventDefault();
+      $.ajax({
+        type:"POST",
+        url:'{% url 'fav_del' %}',
+        data:{
+          del_id: $(this).data('index'),
+          csrfmiddlewaretoken:'{{ csrf_token }}',
+          action:'post',
+        },
+        success:function(json){
+          location.reload();
+        },
+        error: function(xhr,errmsg,err){
+          console.log("Unsuccesful")
+        },
+      })
+    })
+  })
+
+</script>
+
+{% endblock content %}
