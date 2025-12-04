@@ -1,1 +1,1 @@
-web: gunicorn Django_Wok.wsgi
+web: gunicorn MovieFiles.wsgi
