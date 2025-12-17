@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 from . import settings
 
 urlpatterns = [
-    path('sec-ad-dash-54/', admin.site.urls),
+    path('sec-ad-dash87/', admin.site.urls),
     path('',include('MovieFiles.urls')),
     path('fav/',include('Fav_App.urls')),
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
