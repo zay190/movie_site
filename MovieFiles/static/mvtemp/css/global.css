@@ -446,7 +446,7 @@ border-bottom:1px solid #2d2e34;
  }
 .navbar-light .navbar-toggler{
 box-shadow:none!important;
-background:#fff;
+/* background:#fff; */
 border:none;
 border-radius:0;
  }
